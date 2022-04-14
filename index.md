@@ -68,6 +68,12 @@ export GOOGLE_APPLICATION_CREDENTIALS=key.json
 
 ## Compute Engine
 
+`gcloud compute instances create $INSTANCENAME --machine-type n1-standard-2 --zone $ZONE`
+  * Crea una VM del tipo n1-standard-2
+
+`gcloud compute ssh $INSTANCENAME --zone $ZONE`
+  * Inicia una conexión por SSH hacia una VM en Compute Engine
+
 `gcloud compute networks subnets update default --region=$REGION --enable-private-ip-google-access`
   * Habilita el uso de Private Google Access (PGA) para las VM en la subnet. Esto se usa en caso de que se desactiven las IP publicas para los worker nodes.
 
