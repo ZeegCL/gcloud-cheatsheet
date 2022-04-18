@@ -27,17 +27,30 @@ Comandos
 `gcloud auth list`
   * Lista las cuentas de GCP activas en la CLI
 
-`gcloud config set account $ACCOUNT`
-  * Establece la cuenta activa para trabajar en la CLI
+`gcloud projects list`
+  * Lista los proyectos disponibles para la cuenta activa
+
+`gcloud components list`
+  * Lista los componentes disponibles en la CLI
+
+`gcloud config list --all`
+  * Muestra la configuración del entorno (CLI)
 
 `gcloud config list project`
-  * Lista los proyectos disponibles para la cuenta activa
+  * Obtiene el ID del proyecto seleccionado en la CLI
+
+`gcloud config get-value $PARAMETER`
+  * Obtiene el valor configurado para el parámetro indicado
+
+`gcloud config set account $ACCOUNT`
+  * Establece la cuenta activa para trabajar en la CLI
 
 `gcloud config set compute/region $REGION`
   * Establece la region por defecto para la CLI
 
 `gcloud config set compute/zone $ZONE`
   * Establece la zona por defecto para la CLI
+
 
 
 ## APIs
@@ -68,10 +81,16 @@ export GOOGLE_APPLICATION_CREDENTIALS=key.json
 
 ## Compute Engine
 
+`gcloud compute project-info describe --project $PROJECT_ID`
+  * Muestra la configuración del proyecto para gestionar instancias de Compute Engine
+
+`gcloud compute instances describe $INSTANCE_NAME`
+  * Muestra la configuración de una VM
+
 `gcloud compute instances create $INSTANCENAME --machine-type n1-standard-2 --zone $ZONE`
   * Crea una VM del tipo n1-standard-2
 
-`gcloud compute ssh $INSTANCENAME --zone $ZONE`
+`gcloud compute ssh $INSTANCE_NAME --zone $ZONE`
   * Inicia una conexión por SSH hacia una VM en Compute Engine
 
 `gcloud compute networks subnets update default --region=$REGION --enable-private-ip-google-access`
