@@ -100,7 +100,7 @@ export GOOGLE_APPLICATION_CREDENTIALS=key.json
 
 ## Cloud Storage
 
-`gsutil mb -p <PROJECT_UI> -c <TYPE> -l <REGION> gs://mybucket`
+`gsutil mb -p <PROJECT_ID> -c <TYPE> -l <REGION> gs://mybucket`
   * Crea un bucket en cloud storage
 
 `gsutil -m cp -r gs://cloud-training/automl-lab-clouds/* gs://$DEVSHELL_PROJECT_ID-vcm/`
@@ -159,6 +159,16 @@ bq --location=US cp mydataset.mytable@$SNAPSHOT mydataset.restored_table
 
 `bq show --schema --format=prettyjson logs.logs | sed '1s/^/{"BigQuery Schema":/' | sed '$s/$/}/' > schema.json`
   * Guarda el schema de una tabla en formato JSON (para lanzar pipelines Dataflow template)
+
+`bq mk taxirides`
+  * Crea un dataset dentro del proyecto actual
+
+```
+bq mk --time_partitioning_field timestamp \
+--schema ride_id:string,point_idx:integer,latitude:float,longitude:float,timestamp:timestamp \
+-t taxirides.realtime
+```
+  * Crea una tabla vacía con definición de schema y particionada por una columna
 
 `bq load --source_format=CSV --autodetect --noreplace nyctaxi.2018trips gs://cloud-training/OCBL013/nyc_tlc_yellow_trips_2018_subset_2.csv`
   * Carga datos en BigQuery desde un CSV almacenado en Cloud Storage
