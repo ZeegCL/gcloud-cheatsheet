@@ -51,6 +51,8 @@ Comandos
 `gcloud config set compute/zone $ZONE`
   * Establece la zona por defecto para la CLI
 
+`gcloud beta interactive`
+  * Inicia el modo interactivo de la CLI. Este posee autocompletado de comandos y nombres de recursos.
 
 
 ## APIs
