@@ -98,6 +98,8 @@ export GOOGLE_APPLICATION_CREDENTIALS=key.json
 `gcloud compute networks subnets update default --region=$REGION --enable-private-ip-google-access`
   * Habilita el uso de Private Google Access (PGA) para las VM en la subnet. Esto se usa en caso de que se desactiven las IP publicas para los worker nodes.
 
+`gcloud compute firewall-rules create my-www-firewall-rule --target-tags my-vm-tag --allow tcp:80`
+  * Habilita el tráfico al puerto 80 TCP, filtrando por las VMs por tag
 
 
 ## Cloud Storage
